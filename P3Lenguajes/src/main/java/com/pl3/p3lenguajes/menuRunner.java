@@ -1,47 +1,42 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.pl3.p3lenguajes;
-
-import com.pl3.p3lenguajes.Consulters.infectionConsulter;
-import com.pl3.p3lenguajes.Consulters.vaccinesConsulter;
-import org.jpl7.*;
-import java.io.File;
-import org.jpl7.Query;
-
 import java.util.Scanner;
+import com.pl3.p3lenguajes.Consulters.conditionsConsulter;
+import com.pl3.p3lenguajes.Consulters.infectionConsulter;
+import com.pl3.p3lenguajes.Consulters.suspicionConsulter;
+import com.pl3.p3lenguajes.Consulters.vaccinesConsulter;
 
 /**
  *
  * @author Yarman
  */
-public class P3Lenguajes {
-
-    public static void main(String[] args) {
-
-        String prologQuery = "consult('C:\\\\final_rules.pl')";
-        try {
-            Query consultQuery = new Query(prologQuery);
-        } catch (Exception e) {
-            System.out.println("Error al conectarse a prolog");
-            return;
-        }
-        System.out.println("Conexión a Prolog exitosa!");
-        System.out.println("Bienvenido al sistema de consultas de prolog!");
+public class menuRunner {
+    private conditionsConsulter condConsult;
+    private infectionConsulter infConsult;
+    private suspicionConsulter susConsult;
+    private vaccinesConsulter vacConsult;
+    private Scanner scanner;
+    public menuRunner(Scanner scanner){
+        this.condConsult= new conditionsConsulter();
+        this.infConsult = new infectionConsulter();
+        this.susConsult = new suspicionConsulter();
+        this.vacConsult = new vaccinesConsulter();
+        this.scanner = scanner;
+        
+    }
+    public void run(){
         int opcion;
-        Scanner scanner = new Scanner(System.in);
-        menuRunner menu = new menuRunner(scanner);
-
         do {
-            System.out.println("Menu:");
-            System.out.println("1. Consultas de Vacunas");
-            System.out.println("2. Consultas de Infecciones");
-            System.out.println("3. Consultas de Sospechas");
-            System.out.println("4. Consultas de Condiciones");
-            System.out.println("5. Salir");
+            
+            System.out.println("1. Consultas por pacientes");
+            System.out.println("2. Consultas generales");
+            
             System.out.print("Digite su opcion: ");
 
-            opcion = scanner.nextInt();
+            opcion = this.scanner.nextInt();
 
             switch (opcion) {
                 case 1:
@@ -68,8 +63,6 @@ public class P3Lenguajes {
                     break;
             }
         } while (opcion != 5);
-
-        scanner.close();
-
     }
+    
 }

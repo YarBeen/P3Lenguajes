@@ -6,10 +6,62 @@ package com.pl3.p3lenguajes.Consulters;
 import org.jpl7.JPL;
 import org.jpl7.Query;
 import org.jpl7.Term;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 /**
  *
  * @author Yarman
  */
 public class infectionConsulter {
+    public void infectorTree (){
+         String query = "spread_desease(X,Y).";
+        Query q = new Query(query);
+        Set<String> resultSet = new HashSet<>();
+        while(q.hasMoreSolutions()){
+             Map<String, Term> solution = q.nextSolution();
+             String result = solution.get("Y") +  " propago la enfermedad a " + solution.get("X");
+            resultSet.add(result);
+        }
+        
+        for (String result : resultSet) {
+                System.out.println(result);
+            }
+        
+        q.close();
+        return;
+    }
+    public void infected(String nombre){
+        String query = "infected("+nombre.toLowerCase()+").";
+        Query q = new Query(query);
+        if(q.hasSolution()){
+            
+            
+            System.out.println("El paciente " + nombre +" esta infectado.");
+            return;
+        }
+        System.out.println("El paciente " + nombre +" no esta infectado o no esta registrado.");
+        
+    }
+      public void infected(){
+        String query = "infected(X).";
+        Query q = new Query(query);
+        if(!q.hasSolution()){
+            System.out.println("Consulta invalida");
+            return;
+        }
+         
+        while (q.hasNext()){
+            var curr =q.nextSolution();
+            
+            Term X = curr.get("X");
+            
+            System.out.println("El paciente " +X+ " esta infectado ");
+            
+            
+        }
+        return;
+        
+    }
     
 }

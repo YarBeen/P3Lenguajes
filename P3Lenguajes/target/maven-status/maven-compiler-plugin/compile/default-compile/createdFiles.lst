@@ -1,2 +1,5 @@
+com\pl3\p3lenguajes\Consulters\conditionsConsulter.class
 com\pl3\p3lenguajes\P3Lenguajes.class
-com\pl3\p3lenguajes\Vaccines\vaccinesConsulter.class
+com\pl3\p3lenguajes\Consulters\suspicionConsulter.class
+com\pl3\p3lenguajes\Consulters\vaccinesConsulter.class
+com\pl3\p3lenguajes\Consulters\infectionConsulter.class

@@ -49,7 +49,7 @@ public class vaccinesConsulter {
         }
         return;
     }
-    public void vacunasPorPaciente(){
+    public void vaccinesByPacient(){
          String query = "howManyVaccines(X,Result).";
         Query q = new Query(query);
          if(!q.hasSolution()){
@@ -71,7 +71,30 @@ public class vaccinesConsulter {
             
         }
     }
-       public void vacunasPorPaciente(String nombrePersona){
+    public void fullyVaccinedPacient(){
+           String query = "allVaccines(X).";
+        Query q = new Query(query);
+         if(!q.hasSolution()){
+            System.out.println("Nombre invalido.");
+            return ;
+        }
+         while (q.hasNext()){
+            var curr =q.nextSolution();
+            
+//            Term X = curr.get("X");
+//            if(X==null){
+//                System.out.println("La persona no está registrado");
+//                return;
+//            }
+            Term X = curr.get("X");
+            
+            System.out.println("El paciente " +X+ "  esta completamente vacunado ");
+            
+            
+        }
+        return;
+    }
+       public void vaccinesByPacient(String nombrePersona){
          String query = "howManyVaccines("+nombrePersona+",Result).";
         Query q = new Query(query);
          if(!q.hasSolution()){
