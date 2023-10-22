@@ -51,7 +51,6 @@ symptom(dolor_de_cabeza).
 symptom(fatiga).
 symptom(dolor_de_garganta).
 paciente(yarman).
-paciente(juan).
 is_infected(yarman).
 
  count_symptoms(_,[],0).
