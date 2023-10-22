@@ -7,7 +7,6 @@ package com.pl3.p3lenguajes;
 import com.pl3.p3lenguajes.Consulters.infectionConsulter;
 import com.pl3.p3lenguajes.Consulters.vaccinesConsulter;
 
-
 import org.jpl7.*;
 import java.io.File;
 import org.jpl7.Query;
@@ -45,9 +44,7 @@ public class P3Lenguajes {
 
         scanner.close();
 
-
         System.out.println("Hello World!");
-        
 
     }
 }

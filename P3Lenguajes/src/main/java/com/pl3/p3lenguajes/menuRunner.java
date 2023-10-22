@@ -351,7 +351,7 @@ public class menuRunner {
                     System.out.println("Digite el nombre del paciente a consultar.");
                     paciente = scanner.nextLine();
                     System.out.println(paciente);
-                    this.sympConsult.find_count_symptoms(paciente);
+                    this.sympConsult.findCountSymptoms(paciente);
                     System.out.println("\n\n Digite cualquier tecla para continuar");
                     
                     scanner.nextLine();

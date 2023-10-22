@@ -16,7 +16,7 @@ public class SymptomsConsulter {
     
     
     public void findSymptoms(String patientName){
-        String prologQuery = "find_symptoms('"+ patientName + "', Symptoms)"; 
+        String prologQuery = "find_symptoms('"+ patientName + "', Symptoms)."; 
         query = new Query(prologQuery);
         
         if(query.hasSolution()){
@@ -34,7 +34,7 @@ public class SymptomsConsulter {
     
     
     public void isAsymptomatic(String patientName){
-        String prologQuery = "is_asymptomatic(" + patientName + ")";
+        String prologQuery = "is_asymptomatic(" + patientName + ").";
         query = new Query(prologQuery);
         if(query.hasSolution()){
             System.out.println("Patient " + patientName + "is asymptomatic");
@@ -44,12 +44,13 @@ public class SymptomsConsulter {
     }
     
     public void isAsymptomatic(){
-        String prologQuery = "is_asymptomatic(X)";
+        String prologQuery = "is_asymptomatic(X).";
         query = new Query(prologQuery);
         if(query.hasSolution()){
+            System.out.println("Asymptomatic patients:");
             while(query.hasMoreSolutions()){
                 String patientName = query.nextSolution().get("X").toString();
-                System.out.println("Patient " + patientName + " is asymptomatic");
+                System.out.println("- " + patientName);
             }
         }else{
             System.out.println("No asymptomatic patients found");
@@ -58,7 +59,7 @@ public class SymptomsConsulter {
     
     
     public void countSymptoms(String patientName, List<String> symptoms) {
-        String prologQuery = "count_symptoms('" + patientName + "', " + javaListToPrologList(symptoms) +")., N)";
+        String prologQuery = "count_symptoms('" + patientName + "', " + javaListToPrologList(symptoms) + ", N).";
         query = new Query(prologQuery);
         if (query.hasSolution()) {
             System.out.println("Patient " + patientName + " has " + query.oneSolution().get("N").intValue() + "Symptoms");
@@ -68,7 +69,7 @@ public class SymptomsConsulter {
     }
     
     
-    public void find_count_symptoms(String patientName){
+    public void findCountSymptoms(String patientName){
         String prologQuery = "find_count_symptoms(" + patientName + ",NumSymptoms).";
         query = new Query(prologQuery);
         if(query.hasMoreSolutions()){
@@ -77,6 +78,33 @@ public class SymptomsConsulter {
             System.out.println("Patient doesn´t exist");
         }
     }
+    
+    
+    public void recovered(String patientName){
+        String prologQuery = "recovered(" + patientName +").";
+        query = new Query(prologQuery);
+        if(query.hasMoreSolutions()){
+            System.out.println("Patient " + patientName + " has recovered");
+        } else {
+            System.out.println("Patient hasn´t recovered yet");
+        }
+    }
+    
+    public void recovered(){
+        String prologQuery = "recovered(X).";
+        query = new Query(prologQuery);
+        if(query.hasSolution()){
+            System.out.println("Patients recovered:");
+            while(query.hasMoreSolutions()){
+                String patientName = query.nextSolution().get("X").toString();
+                System.out.println("- " + patientName);
+            }
+        }else{
+            System.out.println("No asymptomatic patients found");
+        }
+    }
+    
+    
     
     
     private String javaListToPrologList(List<String> list) {
