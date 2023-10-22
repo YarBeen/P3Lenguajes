@@ -10,6 +10,10 @@ has_symptom(pedro, dolor_de_garganta).
 has_symptom(laura, fiebre).
 has_symptom(laura, dolor_de_garganta).
 
+has_condition(joseph,obesidad).
+
+infected(joseph).
+usesMask(laura).
 symptom(fiebre).
 symptom(tos).
 symptom(dolor_de_cabeza).
@@ -17,7 +21,7 @@ symptom(fatiga).
 symptom(dolor_de_garganta).
 paciente(yarman).
 paciente(juan).
-is_infected(yarman).
+infected(yarman).
 age(juan,30).
 age(eduardo,10).
 firstDosis(eduardo).
@@ -28,6 +32,7 @@ secondDosis(maria).
 thirdDosis(maria).
 infected(jose).
 wasInContact(maria,jose).
+worksWith(yurgen,laura).
 infects(maria,pedro).
 infects(pedro,julia).
 infects(julia,flor).
@@ -40,6 +45,7 @@ has_symptom(jose,migraine).
 wasInContact(yurgen,michael).
 infected(michael).
 paciente(yurgen).
+negativeCovidTest(paolo).
 %Rules
 adult(X):-
     age(X,Age),
@@ -55,15 +61,15 @@ vaccineByAge(X,Vaccine):-
     adult(X),
     Vaccine = 'Pfizer o Moderna'.
 
-spread_desease(X,Y):- infects(X,Y). %Done
-spread_desease(X,Y):- infects(X,Z),spread_desease(Z,Y). %Done
-suspicious(X):- (has_symptom(X,_); (wasInContact(X,Y), infected(Y))). %Done
-mediumLowSuspicious(X) :- (wasInContact(X,Y), has_symptom(Y,_),(not(usesMask(X));not(usesMask(Y)))). %Done
-lowSuspicious(X) :- wasInContact(X,Y), has_symptom(Y,_), (usesMask(X); usesMask(Y)). %Done
+spread_desease(X,Y):- infects(X,Y).
+spread_desease(X,Y):- infects(X,Z),spread_desease(Z,Y).
+suspicious(X):- (has_symptom(X,_); (wasInContact(X,Y), infected(Y))).
+mediumLowSuspicious(X) :- (wasInContact(X,Y), has_symptom(Y,_),(not(usesMask(X));not(usesMask(Y)))).
+lowSuspicious(X) :- wasInContact(X,Y), has_symptom(Y,_), (usesMask(X); usesMask(Y)).
 workAtHome(X) :- infected(X); suspicious(X); (worksWith(X,Y),has_symptom(Y,_)).
 allVaccines(X) :- firstDosis(X), secondDosis(X),thirdDosis(X).
 canTravel(X) :- allVaccines(X);negativeCovidTest(x).
-%Done
+
 recommendedReforceVaccine(X, Vaccine):-
  allVaccines(X),
  Vaccine = "Vacuna Bivalente".
@@ -74,7 +80,7 @@ recommendedReforceVaccine(X,Vaccine):-
 recommendedReforceVaccine(X,Vaccine):-
  paciente(X),(not(firstDosis(X))), Vaccine= "Dos dosis de bivalente mas un refuerzo".
 
- %Done
+
 howManyVaccines(X, Result):-
  allVaccines(X),
  Result = 3.
@@ -88,7 +94,7 @@ howManyVaccines(X,Result):-
  count_symptoms(_,[],0).
  count_symptoms(X,[H|T],N):- paciente(X),symptom(H), has_symptom(X,H),
                               count_symptoms(X,T,N1), N is N1+1.
- is_asymptomatic(X):- paciente(X), not(has_symptom(X,_)), is_infected(X).
+ is_asymptomatic(X):- paciente(X), not(has_symptom(X,_)), infected(X).
 
  find_symptoms(X, Symptoms):-findall(Symptom,(has_symptom(X,Symptom), symptom(Symptom)),Symptoms).
 
@@ -98,10 +104,8 @@ howManyVaccines(X,Result):-
 
  serious_case(X):-has_symptom(X,'trouble breathing').
 
-
  recovered(X):- paciente(X), not(has_symptom(X,_)).
 
- free_test(X):- find_count_symptoms(X,NumSymptoms), NumSymptoms > 2.
 
  has_risk_factor(X):-elder(X); has_condition(X,_).
 
