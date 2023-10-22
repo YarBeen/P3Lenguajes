@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.pl3.p3lenguajes.symptoms.Risk;
+package com.pl3.p3lenguajes.Consulters;
 
 import org.jpl7.*;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Yosward Garcia
  */
-public class RiskConsult {
+public class RiskConsulter {
     
     private Query query;
     

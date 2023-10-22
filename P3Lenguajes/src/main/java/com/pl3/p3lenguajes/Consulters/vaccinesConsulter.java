@@ -38,7 +38,7 @@ public class vaccinesConsulter {
             System.out.println("Error en consulta invalido.");
             return ;
         }
-        while (q.hasNext()){
+        while (q.hasMoreSolutions()){
             var curr =q.nextSolution();
             
             Term X = curr.get("X");

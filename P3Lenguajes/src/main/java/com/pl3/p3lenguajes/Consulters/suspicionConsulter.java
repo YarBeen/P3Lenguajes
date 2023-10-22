@@ -31,12 +31,12 @@ public class suspicionConsulter {
         }
         return;
     }
-     public void suspicious(String nombre){
+     public int suspicious(String nombre){
          String query = "suspicious("+nombre+").";
         Query q = new Query(query);
         if(!q.hasSolution()){
-            System.out.println("Consulta invalida");
-            return;
+          //  System.out.println("Consulta invalida");
+            return -1;
         }
          
         while (q.hasNext()){
@@ -45,10 +45,11 @@ public class suspicionConsulter {
             
             
             System.out.println("El paciente " +nombre+ " es sospechoso. ");
+            return 0;
             
             
         }
-        return;
+        return 0;
     }
      
      public void mediumLowSuspicious(){
@@ -56,7 +57,7 @@ public class suspicionConsulter {
         Query q = new Query(query);
         if(!q.hasSolution()){
             System.out.println("Consulta invalida");
-            return;
+            return ;
         }
          
         while (q.hasNext()){
@@ -70,12 +71,12 @@ public class suspicionConsulter {
         }
         return;
     }
-     public void mediumLowSuspicious(String nombre){
+     public int mediumLowSuspicious(String nombre){
          String query = "mediumLowSuspicious("+nombre+").";
         Query q = new Query(query);
         if(!q.hasSolution()){
-            System.out.println("Consulta invalida");
-            return;
+            //System.out.println("Consulta invalida");
+            return -1;
         }
          
         while (q.hasNext()){
@@ -84,17 +85,18 @@ public class suspicionConsulter {
             
             
             System.out.println("El paciente " +nombre+ " tiene sospecha media. ");
+            return 0;
             
             
         }
-        return;
+        return 0;
     }
      
        public void lowSuspicious(){
          String query = "lowSuspicious(X).";
         Query q = new Query(query);
         if(!q.hasSolution()){
-            System.out.println("Consulta invalida");
+            //System.out.println("Consulta invalida");
             return;
         }
          
@@ -109,12 +111,12 @@ public class suspicionConsulter {
         }
         return;
     }
-     public void lowSuspicious(String nombre){
+     public int lowSuspicious(String nombre){
          String query = "lowSuspicious("+nombre+").";
         Query q = new Query(query);
         if(!q.hasSolution()){
-            System.out.println("Consulta invalida");
-            return;
+          //  System.out.println("Consulta invalida");
+            return -1;
         }
          
         while (q.hasNext()){
@@ -123,10 +125,11 @@ public class suspicionConsulter {
             
             
             System.out.println("El paciente " +nombre+ " tiene pocas posibilidades de estar infectado. ");
+            return 0;
             
             
         }
-        return;
+        return 0;
     }
     
 }

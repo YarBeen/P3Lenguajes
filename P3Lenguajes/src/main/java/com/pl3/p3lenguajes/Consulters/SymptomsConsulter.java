@@ -1,5 +1,5 @@
 
-package com.pl3.p3lenguajes.symptoms;
+package com.pl3.p3lenguajes.Consulters;
 
 import org.jpl7.*;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import org.jpl7.Query;
  *
  * @author Yosward Garcia
  */
-public class SymptomsConsult {
+public class SymptomsConsulter {
     
     private Query query;
     
@@ -58,7 +58,7 @@ public class SymptomsConsult {
     
     
     public void countSymptoms(String patientName, List<String> symptoms) {
-        String prologQuery = "count_symptoms('" + patientName + "', " + javaListToPrologList(symptoms) + ", N)";
+        String prologQuery = "count_symptoms('" + patientName + "', " + javaListToPrologList(symptoms) +")., N)";
         query = new Query(prologQuery);
         if (query.hasSolution()) {
             System.out.println("Patient " + patientName + " has " + query.oneSolution().get("N").intValue() + "Symptoms");
@@ -69,7 +69,7 @@ public class SymptomsConsult {
     
     
     public void find_count_symptoms(String patientName){
-        String prologQuery = "find_count_symptoms(" + patientName + ",NumSymptoms";
+        String prologQuery = "find_count_symptoms(" + patientName + ",NumSymptoms).";
         query = new Query(prologQuery);
         if(query.hasMoreSolutions()){
             System.out.println("Patient " + patientName + " has " + query.oneSolution().get("NumSymptoms").intValue() + "Symptoms");
