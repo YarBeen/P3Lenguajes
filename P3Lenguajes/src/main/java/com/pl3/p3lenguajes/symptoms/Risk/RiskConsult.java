@@ -17,7 +17,7 @@ public class RiskConsult {
     
     
     public void seriousCase(String patientName){
-        String prologQuery = "serious_case('" + patientName + "')"; 
+        String prologQuery = "serious_case('" + patientName + "')."; 
         query = new Query(prologQuery);
         
         if(query.hasSolution()){
@@ -28,5 +28,71 @@ public class RiskConsult {
         }
     }
     
+    public void seriousCase(){
+        String prologQuery = "serious_case(X).";
+        query = new Query(prologQuery);
+        if(query.hasSolution()){
+            System.out.println("Patients who are serious cases:");
+            while(query.hasMoreSolutions()){
+                String patientName = query.nextSolution().get("X").toString();
+                System.out.println("- " + patientName);
+            }
+        }else{
+            System.out.println("There's no serious cases");
+        }
+    }
     
+    public void hasRiskFactor(String patientName){
+        String prologQuery = "has_risk_factor('" + patientName + "')."; 
+        query = new Query(prologQuery);
+        
+        if(query.hasSolution()){
+            System.out.println("Patient " + patientName + " has a risk factor");
+            System.out.println("Is an elder or has a special condition");
+        } else{
+            System.out.println(patientName + "doesn't have a rsk factor");
+        }
+    }
+    
+    public void hasRiskFactor(){
+        String prologQuery = "has_risk_factor('X')."; 
+        query = new Query(prologQuery);
+        
+        if(query.hasSolution()){
+            System.out.println("Patients with high risk factor:");
+            while(query.hasMoreSolutions()){
+                String patientName = query.nextSolution().get("X").toString();
+                System.out.println("- " + patientName);
+            }
+        }else{
+            System.out.println("There's no serious cases");
+        }
+    }
+    
+    public void isPriority(){
+        String prologQuery = "is_priority('X')."; 
+        query = new Query(prologQuery);
+        
+        if(query.hasSolution()){
+            System.out.println("Patients who are priority:");
+            while(query.hasMoreSolutions()){
+                String patientName = query.nextSolution().get("X").toString();
+                System.out.println("- " + patientName);
+            }
+        }else{
+            System.out.println("There's no priority patients");
+        }
+    }
+    
+    
+    public void isPriority(String patientName){
+        String prologQuery = "is_priority('" + patientName + "')."; 
+        query = new Query(prologQuery);
+        
+        if(query.hasSolution()){
+            System.out.println("Patient " + patientName + " is a priority");
+        } else{
+            System.out.println(patientName + "Isn't a priority");
+        }
+    }
 }

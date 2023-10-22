@@ -2,12 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 package com.pl3.p3lenguajes;
-<<<<<<< HEAD
+
 
 import com.pl3.p3lenguajes.Consulters.infectionConsulter;
 import com.pl3.p3lenguajes.Consulters.vaccinesConsulter;
-=======
->>>>>>> 1de9f6461402e4a450c8f68670d65d5f5a0e06d4
 import org.jpl7.*;
 import java.io.File;
 import org.jpl7.Query;
@@ -21,7 +19,6 @@ import java.util.Scanner;
 public class P3Lenguajes {
 
     public static void main(String[] args) {
-<<<<<<< HEAD
 
         String prologQuery = "consult('C:\\\\final_rules.pl')";
         try {
@@ -74,10 +71,6 @@ public class P3Lenguajes {
         } while (opcion != 5);
 
         scanner.close();
-
-=======
         System.out.println("Hello World!");
-        
->>>>>>> 1de9f6461402e4a450c8f68670d65d5f5a0e06d4
     }
 }
