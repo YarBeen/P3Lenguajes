@@ -72,7 +72,7 @@ public class SymptomsConsulter {
     public void findCountSymptoms(String patientName){
         String prologQuery = "find_count_symptoms(" + patientName + ",NumSymptoms).";
         query = new Query(prologQuery);
-        if(query.hasMoreSolutions()){
+        if(query.hasSolution()){
             System.out.println("Patient " + patientName + " has " + query.oneSolution().get("NumSymptoms").intValue() + "Symptoms");
         } else {
             System.out.println("Patient doesn´t exist");

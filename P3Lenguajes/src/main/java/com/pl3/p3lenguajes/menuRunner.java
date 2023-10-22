@@ -320,7 +320,8 @@ public class menuRunner {
             System.out.println("1. Consultar si un paciente es asintomático");
             System.out.println("2. Consultar cuantos sintomas tiene un paciente");
             System.out.println("3. Consultar cuales sintomas tiene un paciente");
-            System.out.println("4. Salir");
+            System.out.println("4. Consultar si un paciente se recuperó");
+            System.out.println("5. Salir");
             
             System.out.print("Digite su opcion: ");
             try {
@@ -367,6 +368,14 @@ public class menuRunner {
                     scanner.nextLine();
                     break;
                 case 4:
+                    scanner.nextLine();
+                    System.out.println("Digite el nombre del paciente a consultar.");
+                    paciente = scanner.nextLine();
+                    System.out.println(paciente);
+                    this.sympConsult.recovered(paciente);
+                    System.out.println("\n\n Digite cualquier tecla para continuar");
+                    break;
+                case 5:
                     
                     break;
                 
@@ -374,7 +383,7 @@ public class menuRunner {
                     System.out.println("Opcion Invalidad");
                     break;
             }
-        } while (opcion != 4);
+        } while (opcion != 5);
     }
     
     public void generalSymptomsMenuRun() {
@@ -382,8 +391,9 @@ public class menuRunner {
         do {
             
             System.out.println("1. Ver pacientes asintomáticos");
+            System.out.println("2. Ver pacientes recuperados");
             
-            System.out.println("2. Salir");
+            System.out.println("3. Salir");
             
             System.out.print("Digite su opcion: ");
             try {
@@ -407,14 +417,20 @@ public class menuRunner {
                     
                     break;
                 case 2:
+                    this.sympConsult.recovered();
+                    System.out.println("\n\n Digite cualquier tecla para continuar");
+                    
+                    scanner.nextLine();
+                    scanner.nextLine();
+                    break;
+                case 3:
                     
                     break;
-                
                 default:
                     System.out.println("Opcion Invalidad");
                     break;
             }
-        } while (opcion != 2);
+        } while (opcion != 3);
     }
     
     public void pacientRiskMenuRun() {
@@ -422,9 +438,10 @@ public class menuRunner {
         String paciente;
         do {
             
-            System.out.println("1. Consultar si un paciente lleva trabajo remoto");
-            System.out.println("2. Consultar si un paciente puede viajar");
-            System.out.println("3. Salir");
+            System.out.println("1. Consultar si un paciente tiene caso severo");
+            System.out.println("2. Consultar si un paciente tiene factor de riesgo");
+            System.out.println("3. Consultar si un paciente es prioridad");
+            System.out.println("4. Salir");
             
             System.out.print("Digite su opcion: ");
             try {
@@ -444,7 +461,7 @@ public class menuRunner {
                     System.out.println("Digite el nombre del paciente a consultar.");
                     paciente = scanner.nextLine();
                     System.out.println(paciente);
-                    this.condConsult.workAtHome(paciente);
+                    this.riskConsult.seriousCase(paciente);
                     System.out.println("\n\n Digite cualquier tecla para continuar");
                     
                     scanner.nextLine();
@@ -455,12 +472,20 @@ public class menuRunner {
                     System.out.println("Digite el nombre del paciente a consultar.");
                     paciente = scanner.nextLine();
                     System.out.println(paciente);
-                    this.condConsult.workAtHome(paciente);
+                    this.riskConsult.hasRiskFactor(paciente);
                     System.out.println("\n\n Digite cualquier tecla para continuar");
                     
                     scanner.nextLine();
                     break;
                 case 3:
+                    scanner.nextLine();
+                    System.out.println("Digite el nombre del paciente a consultar.");
+                    paciente = scanner.nextLine();
+                    System.out.println(paciente);
+                    this.riskConsult.isPriority(paciente);
+                    System.out.println("\n\n Digite cualquier tecla para continuar");
+                    break;
+                case 4:
                     
                     break;
                 
@@ -468,17 +493,18 @@ public class menuRunner {
                     System.out.println("Opcion Invalidad");
                     break;
             }
-        } while (opcion != 3);
+        } while (opcion != 4);
     }
     
     public void generalRiskMenuRun() {
         int opcion;
         do {
             
-            System.out.println("1. Ver pacientes que fueron mandados a trabajo remoto");
-            System.out.println("2. Ver pacientes que pueden viajar");
+            System.out.println("1.Ver pacientes con casos severos");
+            System.out.println("2. Ver pacientes con factor de riesgo");
+            System.out.println("3. Ver pacientes de prioridad");
             
-            System.out.println("3. Salir");
+            System.out.println("4. Salir");
             
             System.out.print("Digite su opcion: ");
             try {
@@ -494,7 +520,7 @@ public class menuRunner {
             
             switch (opcion) {
                 case 1:
-                    this.condConsult.workAtHome();
+                    this.riskConsult.seriousCase();
                     System.out.println("\n\n Digite cualquier tecla para continuar");
                     
                     scanner.nextLine();
@@ -502,13 +528,20 @@ public class menuRunner {
                     
                     break;
                 case 2:
-                    this.condConsult.canTravel();
+                    this.riskConsult.hasRiskFactor();
                     System.out.println("\n\n Digite cualquier tecla para continuar");
                     
                     scanner.nextLine();
                     scanner.nextLine();
                     break;
                 case 3:
+                    this.riskConsult.isPriority();
+                    System.out.println("\n\n Digite cualquier tecla para continuar");
+                    
+                    scanner.nextLine();
+                    scanner.nextLine();
+                    break;
+                case 4:
                     
                     break;
                 
@@ -516,7 +549,7 @@ public class menuRunner {
                     System.out.println("Opcion Invalidad");
                     break;
             }
-        } while (opcion != 3);
+        } while (opcion != 4);
     }
     
     public void pacientSuspicionMenuRun() {
@@ -845,6 +878,7 @@ public class menuRunner {
             
             System.out.println("1. Consultas por pacientes");
             System.out.println("2. Consultas generales");
+            System.out.println("3. Salir");
             
             System.out.print("Digite su opcion: ");
             

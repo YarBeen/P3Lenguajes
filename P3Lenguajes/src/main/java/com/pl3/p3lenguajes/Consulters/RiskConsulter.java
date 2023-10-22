@@ -17,7 +17,7 @@ public class RiskConsulter {
     
     
     public void seriousCase(String patientName){
-        String prologQuery = "serious_case('" + patientName + "')."; 
+        String prologQuery = "serious_case(" + patientName + ")."; 
         query = new Query(prologQuery);
         
         if(query.hasSolution()){
@@ -43,7 +43,7 @@ public class RiskConsulter {
     }
     
     public void hasRiskFactor(String patientName){
-        String prologQuery = "has_risk_factor('" + patientName + "')."; 
+        String prologQuery = "has_risk_factor(" + patientName + ")."; 
         query = new Query(prologQuery);
         
         if(query.hasSolution()){
@@ -55,7 +55,7 @@ public class RiskConsulter {
     }
     
     public void hasRiskFactor(){
-        String prologQuery = "has_risk_factor('X')."; 
+        String prologQuery = "has_risk_factor(X)."; 
         query = new Query(prologQuery);
         
         if(query.hasSolution()){
@@ -65,12 +65,12 @@ public class RiskConsulter {
                 System.out.println("- " + patientName);
             }
         }else{
-            System.out.println("There's no serious cases");
+            System.out.println("There's no spatiens with risk factor");
         }
     }
     
     public void isPriority(){
-        String prologQuery = "is_priority('X')."; 
+        String prologQuery = "is_priority(X)."; 
         query = new Query(prologQuery);
         
         if(query.hasSolution()){
@@ -86,7 +86,7 @@ public class RiskConsulter {
     
     
     public void isPriority(String patientName){
-        String prologQuery = "is_priority('" + patientName + "')."; 
+        String prologQuery = "is_priority(" + patientName + ")."; 
         query = new Query(prologQuery);
         
         if(query.hasSolution()){
