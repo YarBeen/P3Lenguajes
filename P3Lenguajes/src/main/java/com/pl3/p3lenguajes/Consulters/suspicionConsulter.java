@@ -31,8 +31,12 @@ public class suspicionConsulter {
         }
         return;
     }
-     public int suspicious(String nombre){
-         String query = "suspicious("+nombre+").";
+     public int suspicious(String patientName){
+          Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+        }
+         String query = "suspicious("+patientName+").";
         Query q = new Query(query);
         if(!q.hasSolution()){
           //  System.out.println("Consulta invalida");
@@ -44,7 +48,7 @@ public class suspicionConsulter {
             
             
             
-            System.out.println("El paciente " +nombre+ " es sospechoso. ");
+            System.out.println("El paciente " +patientName+ " es sospechoso. ");
             return 0;
             
             
@@ -71,8 +75,13 @@ public class suspicionConsulter {
         }
         return;
     }
-     public int mediumLowSuspicious(String nombre){
-         String query = "mediumLowSuspicious("+nombre+").";
+     public int mediumLowSuspicious(String patientName){
+          Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+            return -1;
+        }
+         String query = "mediumLowSuspicious("+patientName+").";
         Query q = new Query(query);
         if(!q.hasSolution()){
             //System.out.println("Consulta invalida");
@@ -84,7 +93,7 @@ public class suspicionConsulter {
             
             
             
-            System.out.println("El paciente " +nombre+ " tiene sospecha media. ");
+            System.out.println("El paciente " +patientName+ " tiene sospecha media. ");
             return 0;
             
             
@@ -111,8 +120,13 @@ public class suspicionConsulter {
         }
         return;
     }
-     public int lowSuspicious(String nombre){
-         String query = "lowSuspicious("+nombre+").";
+     public int lowSuspicious(String patientName){
+          Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+            return -1;
+        }
+         String query = "lowSuspicious("+patientName+").";
         Query q = new Query(query);
         if(!q.hasSolution()){
           //  System.out.println("Consulta invalida");
@@ -124,7 +138,7 @@ public class suspicionConsulter {
             
             
             
-            System.out.println("El paciente " +nombre+ " tiene pocas posibilidades de estar infectado. ");
+            System.out.println("El paciente " +patientName+ " tiene pocas posibilidades de estar infectado. ");
             return 0;
             
             

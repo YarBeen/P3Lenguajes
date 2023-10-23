@@ -17,6 +17,10 @@ public class RiskConsulter {
     
     
     public void seriousCase(String patientName){
+        Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+        }
         String prologQuery = "serious_case(" + patientName + ")."; 
         query = new Query(prologQuery);
         
@@ -43,6 +47,10 @@ public class RiskConsulter {
     }
     
     public void hasRiskFactor(String patientName){
+         Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+        }
         String prologQuery = "has_risk_factor(" + patientName + ")."; 
         query = new Query(prologQuery);
         
@@ -86,6 +94,10 @@ public class RiskConsulter {
     
     
     public void isPriority(String patientName){
+         Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+        }
         String prologQuery = "is_priority(" + patientName + ")."; 
         query = new Query(prologQuery);
         

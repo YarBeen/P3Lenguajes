@@ -3,7 +3,6 @@
  */
 package com.pl3.p3lenguajes;
 
-
 import com.pl3.p3lenguajes.Consulters.infectionConsulter;
 import com.pl3.p3lenguajes.Consulters.vaccinesConsulter;
 
@@ -21,19 +20,18 @@ public class P3Lenguajes {
 
     public static void main(String[] args) {
 
-
         String prologQuery = "consult('C:\\\\final_rules.pl')";
         try {
             Query consultQuery = new Query(prologQuery);
-            if(!consultQuery.hasSolution()){
-            throw new Exception();
-        }
-            
+            if (!consultQuery.hasSolution()) {
+                throw new Exception();
+            }
+
         } catch (Exception e) {
             System.out.println("Error al conectarse a prolog");
             return;
         }
-        new vaccinesConsulter().vaccineByAge();
+
         System.out.println("Conexión a Prolog exitosa!");
         System.out.println("Bienvenido al sistema de consultas de prolog!");
         int opcion;
@@ -44,7 +42,7 @@ public class P3Lenguajes {
 
         scanner.close();
 
-        System.out.println("Hello World!");
+        
 
     }
 }

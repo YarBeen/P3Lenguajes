@@ -12,8 +12,12 @@ import org.jpl7.Term;
  * @author Yarman
  */
 public class conditionsConsulter {
-     public void workAtHome(String nombrePersona){
-        String query = "workAtHome("+nombrePersona+").";
+     public void workAtHome(String patientName){
+          Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+        }
+        String query = "workAtHome("+patientName+").";
         Query q = new Query(query);
         if(!q.hasSolution()){
             System.out.println("La persona no trabaja en casa.");
@@ -23,7 +27,7 @@ public class conditionsConsulter {
             var curr =q.nextSolution();
             
             
-            System.out.println(nombrePersona + " trabaja en casa");
+            System.out.println(patientName + " trabaja en casa");
             
             
         }
@@ -47,8 +51,12 @@ public class conditionsConsulter {
         }
         return;
     }
-     public void canTravel(String nombrePersona){
-        String query = "canTravel("+nombrePersona+").";
+     public void canTravel(String patientName){
+          Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+        }
+        String query = "canTravel("+patientName+").";
         Query q = new Query(query);
         if(!q.hasSolution()){
             System.out.println("La persona no puede viaja.");
@@ -58,7 +66,7 @@ public class conditionsConsulter {
             var curr =q.nextSolution();
             
             
-            System.out.println(nombrePersona + " puede viajar");
+            System.out.println(patientName + " puede viajar");
             
             
         }
