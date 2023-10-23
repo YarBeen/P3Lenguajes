@@ -14,7 +14,19 @@ import java.util.InputMismatchException;
  * @author Yarman
  */
 public class menuRunner {
-    
+    /**
+* Diferentes menus para consultas
+* Los menos se dividen en categoryMenu Ejemplo infecctionMenu, estos menus preguntan primero si se desean hacer consultas de 1 paciente o de todos
+* Los menus que tienen generalCategoryMenu, son aquellos que responden a consultas de "todosAquellosQue" según categoria.
+* Ejemplo: generalInfectionMenu contiene las opciones de ver todos aquellos que estan infectados.
+* Los menus que se llaman pacienteCategoryMenu, son aquellos que responden a consultas de un paciente especifico
+* Ejmeplo: pacientInfectionMenu posee consultas para saber si un paciente está infectado.
+* Todos los menus al realizar una consulta, imprimen la consulta y despues solicitan un input cualquier para continuar.
+
+
+* 
+
+*/
     private conditionsConsulter condConsult;
     private infectionConsulter infConsult;
     private suspicionConsulter susConsult;
@@ -22,7 +34,13 @@ public class menuRunner {
     private RiskConsulter riskConsult;
     private SymptomsConsulter sympConsult;
     private Scanner scanner;
-    
+    /**
+* El constructor recibe un scanner para estar recibiendo parametros por terminal.
+
+
+* 
+
+*/
     public menuRunner(Scanner scanner) {
         this.condConsult = new conditionsConsulter();
         this.infConsult = new infectionConsulter();
