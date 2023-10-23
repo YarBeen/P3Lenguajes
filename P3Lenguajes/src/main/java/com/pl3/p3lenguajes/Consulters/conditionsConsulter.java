@@ -15,7 +15,7 @@ import org.jpl7.Term;
  * @author Yarman
  */
 public class conditionsConsulter {
-
+    
     public void workAtHome(String patientName) {
         Query queryPaciente = new Query("paciente(" + patientName + ").");
         if (!queryPaciente.hasSolution()) {
