@@ -4,11 +4,6 @@
 package com.pl3.p3lenguajes;
 
 
-import com.pl3.p3lenguajes.Consulters.infectionConsulter;
-import com.pl3.p3lenguajes.Consulters.vaccinesConsulter;
-
-import org.jpl7.*;
-import java.io.File;
 import org.jpl7.Query;
 
 import java.util.Scanner;
@@ -33,10 +28,10 @@ public class P3Lenguajes {
             System.out.println("Error al conectarse a prolog");
             return;
         }
-        new vaccinesConsulter().vaccineByAge();
+        System.out.println();
         System.out.println("Conexión a Prolog exitosa!");
         System.out.println("Bienvenido al sistema de consultas de prolog!");
-        int opcion;
+        
         Scanner scanner = new Scanner(System.in);
         menuRunner menu = new menuRunner(scanner);
 
@@ -44,7 +39,6 @@ public class P3Lenguajes {
 
         scanner.close();
 
-        System.out.println("Hello World!");
 
     }
 }

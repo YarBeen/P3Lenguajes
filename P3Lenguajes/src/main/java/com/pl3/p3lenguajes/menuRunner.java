@@ -43,7 +43,7 @@ public class menuRunner {
         int opcion;
         String paciente;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultar las vacunas que se puede poner un paciente");
             System.out.println("2. Consultar cuantas veces se ha vacunado un paciente");
             System.out.println("3. Consultar vacunas de refuerzo recomendadas para un paciente");
@@ -107,7 +107,7 @@ public class menuRunner {
     public void generalVaccineMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultar las vacunas que se puede poner cada paciente");
             System.out.println("2. Consultar cuantas veces se ha vacunado cada paciente");
             System.out.println("3. Consultar paciente que estan completamente vacunados");
@@ -171,7 +171,7 @@ public class menuRunner {
         int opcion;
         String paciente;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultar si un paciente está infectado");
             System.out.println("2. Salir");
             
@@ -214,7 +214,7 @@ public class menuRunner {
         int opcion;
         String paciente;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultar si un paciente lleva trabajo remoto");
             System.out.println("2. Consultar si un paciente puede viajar");
             System.out.println("3. Salir");
@@ -267,7 +267,7 @@ public class menuRunner {
     public void generalConditionMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Ver pacientes que fueron mandados a trabajo remoto");
             System.out.println("2. Ver pacientes que pueden viajar");
             
@@ -316,7 +316,7 @@ public class menuRunner {
         int opcion;
         String paciente;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultar si un paciente es asintomático");
             System.out.println("2. Consultar cuantos sintomas tiene un paciente");
             System.out.println("3. Consultar cuales sintomas tiene un paciente");
@@ -389,7 +389,7 @@ public class menuRunner {
     public void generalSymptomsMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Ver pacientes asintomáticos");
             System.out.println("2. Ver pacientes recuperados");
             
@@ -437,7 +437,7 @@ public class menuRunner {
         int opcion;
         String paciente;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultar si un paciente tiene caso severo");
             System.out.println("2. Consultar si un paciente tiene factor de riesgo");
             System.out.println("3. Consultar si un paciente es prioridad");
@@ -499,7 +499,7 @@ public class menuRunner {
     public void generalRiskMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1.Ver pacientes con casos severos");
             System.out.println("2. Ver pacientes con factor de riesgo");
             System.out.println("3. Ver pacientes de prioridad");
@@ -557,7 +557,7 @@ public class menuRunner {
         int sumCondicionPaciente;
         String paciente;
         do {
-            
+            System.out.println();
             System.out.println("1. Ver condicion de sospecha de paciente");
             
             System.out.println("2. Salir");
@@ -606,7 +606,7 @@ public class menuRunner {
     public void generalSuspicionMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Ver los pacientes sospechosos");
             System.out.println("2. Ver los pacientes con sospecha media");
             System.out.println("3. Ver los pacientes con sospecha baja");
@@ -662,7 +662,7 @@ public class menuRunner {
     public void generalInfectionMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Ver arbol de infecciones");
             System.out.println("2. Ver personas infectadas");
             
@@ -682,6 +682,8 @@ public class menuRunner {
             
             switch (opcion) {
                 case 1:
+                    System.out.println();
+                    System.out.println("Arbol de contagio");
                     this.infConsult.infectorTree();
                     System.out.println("\n\n Digite cualquier tecla para continuar");
                     
@@ -710,9 +712,10 @@ public class menuRunner {
     public void vacinneMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultas por pacientes");
             System.out.println("2. Consultas generales");
+            System.out.println("3. Salir");
             
             System.out.print("Digite su opcion: ");
             
@@ -751,7 +754,7 @@ public class menuRunner {
     public void infectionMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultas por pacientes");
             System.out.println("2. Consultas generales");
             System.out.println("3. Salir");
@@ -793,9 +796,10 @@ public class menuRunner {
     public void suspicionMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultas por pacientes");
             System.out.println("2. Consultas generales");
+            System.out.println("3. Salir");
             
             System.out.print("Digite su opcion: ");
             
@@ -834,9 +838,10 @@ public class menuRunner {
     public void symptomsMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultas por pacientes");
             System.out.println("2. Consultas generales");
+            System.out.println("3. Salir");
             
             System.out.print("Digite su opcion: ");
             
@@ -875,7 +880,7 @@ public class menuRunner {
     public void riskMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultas por pacientes");
             System.out.println("2. Consultas generales");
             System.out.println("3. Salir");
@@ -917,9 +922,10 @@ public class menuRunner {
     public void conditionMenuRun() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultas por pacientes");
             System.out.println("2. Consultas generales");
+            System.out.println("3. Salir");
             
             System.out.print("Digite su opcion: ");
             
@@ -958,7 +964,7 @@ public class menuRunner {
     public void run() {
         int opcion;
         do {
-            
+            System.out.println();
             System.out.println("1. Consultas de vacuna");
             System.out.println("2. Consultas infecciones");
             System.out.println("3. Consultas de sospechas");
