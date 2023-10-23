@@ -19,6 +19,11 @@ public class vaccinesConsulter {
             System.out.println("El paciente no está registrado en el sistema");
             return;
         }
+         Query queryEdad = new Query("age("+patientName+",X).");
+        if(!queryEdad.hasSolution()){
+            System.out.println("El paciente no tiene registrada su edad en el sistema.");
+            return;
+        }
         String query = "vaccineByAge("+patientName+",Vaccine).";
         Query q = new Query(query);
         if(!q.hasSolution()){
@@ -122,6 +127,7 @@ public class vaccinesConsulter {
             Term quantity = curr.get("Result");
             
             System.out.println("El paciente " +patientName+ " tiene " + quantity + " vacunas");
+            return;
             
             
         }
@@ -150,6 +156,7 @@ public class vaccinesConsulter {
             Term vaccine = curr.get("Vaccine");
             
             System.out.println("El paciente " +patientName+ " necesita " + vaccine);
+            return;
             
             
         }

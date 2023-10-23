@@ -248,7 +248,7 @@ public class menuRunner {
                     System.out.println("Digite el nombre del paciente a consultar.");
                     paciente = scanner.nextLine();
                     System.out.println(paciente);
-                    this.condConsult.workAtHome(paciente);
+                    this.condConsult.canTravel(paciente);
                     System.out.println("\n\n Digite cualquier tecla para continuar");
 
                     scanner.nextLine();
@@ -590,7 +590,7 @@ public class menuRunner {
                         break;
                     }
                     if (sumCondicionPaciente == 0) {
-                        
+
                         System.out.println("\n\n Digite cualquier tecla para continuar");
 
                         scanner.nextLine();
@@ -598,7 +598,7 @@ public class menuRunner {
                     }
                     sumCondicionPaciente += this.susConsult.lowSuspicious(paciente);
                     if (sumCondicionPaciente == -1) {
-                        
+
                         System.out.println("\n\n Digite cualquier tecla para continuar");
 
                         scanner.nextLine();
@@ -606,7 +606,7 @@ public class menuRunner {
                     }
                     sumCondicionPaciente += this.susConsult.mediumLowSuspicious(paciente);
                     if (sumCondicionPaciente == -3) {
-                        System.out.println("El paciente no es sospechoso de nada, o no está registrado en el sistema");
+                        System.out.println("El paciente no es sospechoso de nada.");
                     }
                     System.out.println("\n\n Digite cualquier tecla para continuar");
 
@@ -734,6 +734,7 @@ public class menuRunner {
 
             System.out.println("1. Consultas por pacientes");
             System.out.println("2. Consultas generales");
+            System.out.println("3. Salir");
 
             System.out.print("Digite su opcion: ");
 
@@ -763,7 +764,7 @@ public class menuRunner {
                     break;
 
                 default:
-                    System.out.println("Opcion Invalidad");
+                    System.out.println("Opcion Invalida");
                     break;
             }
         } while (opcion != 3);
@@ -817,6 +818,8 @@ public class menuRunner {
 
             System.out.println("1. Consultas por pacientes");
             System.out.println("2. Consultas generales");
+            System.out.println("3. Salir");
+
 
             System.out.print("Digite su opcion: ");
 
@@ -858,6 +861,7 @@ public class menuRunner {
 
             System.out.println("1. Consultas por pacientes");
             System.out.println("2. Consultas generales");
+            System.out.println("3. Salir");
 
             System.out.print("Digite su opcion: ");
 
@@ -941,6 +945,7 @@ public class menuRunner {
 
             System.out.println("1. Consultas por pacientes");
             System.out.println("2. Consultas generales");
+             System.out.println("3. Salir");
 
             System.out.print("Digite su opcion: ");
 

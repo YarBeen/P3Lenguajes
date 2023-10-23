@@ -35,6 +35,7 @@ public class infectionConsulter {
          Query queryPaciente = new Query("paciente("+patientName+").");
         if(!queryPaciente.hasSolution()){
             System.out.println("El paciente no está registrado en el sistema");
+            return;
         }
         String query = "infected("+patientName.toLowerCase()+").";
         Query q = new Query(query);
