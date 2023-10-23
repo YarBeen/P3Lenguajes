@@ -1,6 +1,53 @@
 %Facts
+paciente(yarman).
+paciente(jose).
+paciente(juan).
+paciente(maria).
+paciente(pedro).
+paciente(laura).
+paciente(joshua).
+paciente(eduardo).
+paciente(yurgen).
+paciente(julia).
+paciente(flor).
+paciente(rosa).
+paciente(gloria).
+paciente(carlos).
+paciente(andres).
+paciente(michael).
+paciente(paolo).
 
- has_symptom(juan, fiebre).
+age(juan,30).
+age(yarman,21).
+age(maria,25).
+age(pedro,32).
+age(laura,22).
+age(joshua,30).
+age(eduardo,10).
+age(yurgen,19).
+age(julia,30).
+age(flor,22).
+age(rosa,30).
+age(gloria,15).
+age(carlos,3).
+age(andres,70).
+age(michael,65).
+age(paolo,66).
+
+
+infected(jose).
+infected(michael).
+infected(rosa).
+infected(flor).
+infected(carlos).
+infected(pedro).
+infected(andres).
+infected(gloria).
+infected(michael).
+infected(julia).
+infected(joshua).
+
+has_symptom(juan, fiebre).
 has_symptom(juan, tos).
 has_symptom(juan, dolor_de_cabeza).
 has_symptom(maria, fiebre).
@@ -9,43 +56,64 @@ has_symptom(pedro, tos).
 has_symptom(pedro, dolor_de_garganta).
 has_symptom(laura, fiebre).
 has_symptom(laura, dolor_de_garganta).
+has_symptom(jose,migranna).
+has_symptom(michael,problemas_para_respirar).
+has_symptom(andres,problemas_para_respirar).
 
-has_condition(joseph,obesidad).
+pruebaCTBajos(joshua).
 
-infected(joseph).
+has_condition(joshua,obesidad).
+
 usesMask(laura).
+
 symptom(fiebre).
 symptom(tos).
 symptom(dolor_de_cabeza).
 symptom(fatiga).
 symptom(dolor_de_garganta).
-paciente(yarman).
-paciente(juan).
-infected(yarman).
-age(juan,30).
-age(eduardo,10).
+symptom(migranna).
+symptom(problemas_para_respirar).
+
+
 firstDosis(eduardo).
 firstDosis(juan).
-secondDosis(juan).
 firstDosis(maria).
+
+secondDosis(juan).
 secondDosis(maria).
+
 thirdDosis(maria).
-infected(jose).
+
 wasInContact(maria,jose).
+wasInContact(maria, pedro).
+wasInContact(yurgen, laura).
+wasInContact(julia, flor).
+wasInContact(john, sophia).
+wasInContact(susan, george).
+wasInContact(yurgen,michael).
+
 worksWith(yurgen,laura).
+workWith(john, maria).
+workWith(maria, peter).
+workWith(peter, laura).
+workWith(carlos, jose).
+workWith(susan, george).
+workWith(john, sophia).
+workWith(andres, jose).
+workWith(andres,carlos).
+
 infects(maria,pedro).
 infects(pedro,julia).
 infects(julia,flor).
 infects(flor,rosa).
 infects(rosa,gloria).
-infects(jose,flor).
+infects(flor,carlos).
 infects(carlos,jose).
-infects(andres,jose).
-has_symptom(jose,migraine).
-wasInContact(yurgen,michael).
-infected(michael).
-paciente(yurgen).
+infects(maria,andres).
+
 negativeCovidTest(paolo).
+
+
 %Rules
 adult(X):-
     age(X,Age),
@@ -102,7 +170,7 @@ howManyVaccines(X,Result):-
  find_count_symptoms(X,NumSymptoms):-find_symptoms(X, Symptoms),count_symptoms(X,Symptoms,NumSymptoms).
 
 
- serious_case(X):-has_symptom(X,'trouble breathing').
+ serious_case(X):-has_symptom(X,problemas_para_respirar).
 
  recovered(X):- paciente(X), not(has_symptom(X,_)),pruebaCTBajos(X).
 
