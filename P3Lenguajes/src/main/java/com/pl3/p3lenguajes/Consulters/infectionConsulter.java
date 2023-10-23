@@ -31,16 +31,21 @@ public class infectionConsulter {
         q.close();
         return;
     }
-    public void infected(String nombre){
-        String query = "infected("+nombre.toLowerCase()+").";
+    public void infected(String patientName){
+         Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+            return;
+        }
+        String query = "infected("+patientName.toLowerCase()+").";
         Query q = new Query(query);
         if(q.hasSolution()){
             
             
-            System.out.println("El paciente " + nombre +" esta infectado.");
+            System.out.println("El paciente " + patientName +" esta infectado.");
             return;
         }
-        System.out.println("El paciente " + nombre +" no esta infectado o no esta registrado.");
+        System.out.println("El paciente " + patientName +" no esta infectado.");
         
     }
       public void infected(){

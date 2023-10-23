@@ -13,8 +13,18 @@ import org.jpl7.Term;
  * @author Yarman
  */
 public class vaccinesConsulter {
-    public void vaccineByAge(String nombrePersona){
-        String query = "vaccineByAge("+nombrePersona+",Vaccine).";
+    public void vaccineByAge(String patientName){
+         Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+            return;
+        }
+         Query queryEdad = new Query("age("+patientName+",X).");
+        if(!queryEdad.hasSolution()){
+            System.out.println("El paciente no tiene registrada su edad en el sistema.");
+            return;
+        }
+        String query = "vaccineByAge("+patientName+",Vaccine).";
         Query q = new Query(query);
         if(!q.hasSolution()){
             System.out.println("Nombre invalido.");
@@ -94,8 +104,13 @@ public class vaccinesConsulter {
         }
         return;
     }
-       public void vaccinesByPacient(String nombrePersona){
-         String query = "howManyVaccines("+nombrePersona+",Result).";
+       public void vaccinesByPacient(String patientName){
+            Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+            return;
+        }
+         String query = "howManyVaccines("+patientName+",Result).";
         Query q = new Query(query);
          if(!q.hasSolution()){
             System.out.println("Nombre invalido.");
@@ -111,14 +126,20 @@ public class vaccinesConsulter {
 //            }
             Term quantity = curr.get("Result");
             
-            System.out.println("El paciente " +nombrePersona+ " tiene " + quantity + " vacunas");
+            System.out.println("El paciente " +patientName+ " tiene " + quantity + " vacunas");
+            return;
             
             
         }
     }
     
-    public void recommendedReforceVaccine(String nombrePersona){
-        String query = "recommendedReforceVaccine("+nombrePersona+",Vaccine).";
+    public void recommendedReforceVaccine(String patientName){
+         Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+            return;
+        }
+        String query = "recommendedReforceVaccine("+patientName+",Vaccine).";
         Query q = new Query(query);
          if(!q.hasSolution()){
             System.out.println("Nombre invalido.");
@@ -134,7 +155,8 @@ public class vaccinesConsulter {
 //            }
             Term vaccine = curr.get("Vaccine");
             
-            System.out.println("El paciente " +nombrePersona+ " necesita " + vaccine);
+            System.out.println("El paciente " +patientName+ " necesita " + vaccine);
+            return;
             
             
         }

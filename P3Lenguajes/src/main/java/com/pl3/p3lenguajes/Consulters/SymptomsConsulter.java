@@ -16,30 +16,41 @@ public class SymptomsConsulter {
     
     
     public void findSymptoms(String patientName){
+         Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+            return;
+        }
         String prologQuery = "find_symptoms('"+ patientName + "', Symptoms)."; 
         query = new Query(prologQuery);
         
         if(query.hasSolution()){
             Term symptomList = query.oneSolution().get("Symptoms");
             List<String> symptons = prologListToJavaList(symptomList);
-            System.out.println("Patient " + patientName + "´s symptoms:");
+            System.out.println("Sintomas de  " + patientName + ":");
             for(String symptom : symptons){
                 System.out.println("- "+ symptom);
             }
         } else{
-            System.out.println("Patient " + patientName + "doesn't have symptoms");
+            System.out.println("" + patientName + " no tiene sintomas");
         }
         
     }
     
     
     public void isAsymptomatic(String patientName){
+        
+         Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+            return;
+        }
         String prologQuery = "is_asymptomatic(" + patientName + ").";
         query = new Query(prologQuery);
         if(query.hasSolution()){
-            System.out.println("Patient " + patientName + "is asymptomatic");
+            System.out.println(" " + patientName + " es asintomatico");
         }else{
-            System.out.println("Patient " + patientName + "is not asymptomatic");
+            System.out.println("" + patientName + " no es asintomatico.");
         }
     }
     
@@ -47,46 +58,61 @@ public class SymptomsConsulter {
         String prologQuery = "is_asymptomatic(X).";
         query = new Query(prologQuery);
         if(query.hasSolution()){
-            System.out.println("Asymptomatic patients:");
+            System.out.println("Paciente asintomaticos:");
             while(query.hasMoreSolutions()){
                 String patientName = query.nextSolution().get("X").toString();
                 System.out.println("- " + patientName);
             }
         }else{
-            System.out.println("No asymptomatic patients found");
+            System.out.println("No hay pacientes asintomaticos");
         }
     }
     
     
     public void countSymptoms(String patientName, List<String> symptoms) {
+         Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+            return;
+        }
         String prologQuery = "count_symptoms('" + patientName + "', " + javaListToPrologList(symptoms) + ", N).";
         query = new Query(prologQuery);
         if (query.hasSolution()) {
-            System.out.println("Patient " + patientName + " has " + query.oneSolution().get("N").intValue() + "Symptoms");
+            System.out.println("El paciente " + patientName + " tiene " + query.oneSolution().get("N").intValue() + " sintomas");
         } else {
-            System.out.println("Patient " + patientName + " has no Symptom");
+            System.out.println("El paciente " + patientName + " no tiene sintomas.");
         }
     }
     
     
     public void findCountSymptoms(String patientName){
+         Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+            return;
+        }
         String prologQuery = "find_count_symptoms(" + patientName + ",NumSymptoms).";
         query = new Query(prologQuery);
         if(query.hasSolution()){
-            System.out.println("Patient " + patientName + " has " + query.oneSolution().get("NumSymptoms").intValue() + "Symptoms");
+            System.out.println("El paciente " + patientName + " tiene " + query.oneSolution().get("NumSymptoms").intValue() + " sintomas");
         } else {
-            System.out.println("Patient doesn´t exist");
+            System.out.println("El paciente no existe");
         }
     }
     
     
     public void recovered(String patientName){
+         Query queryPaciente = new Query("paciente("+patientName+").");
+        if(!queryPaciente.hasSolution()){
+            System.out.println("El paciente no está registrado en el sistema");
+            return;
+        }
         String prologQuery = "recovered(" + patientName +").";
         query = new Query(prologQuery);
         if(query.hasMoreSolutions()){
-            System.out.println("Patient " + patientName + " has recovered");
+            System.out.println("El paciente " + patientName + " se ha recuperado.");
         } else {
-            System.out.println("Patient hasn´t recovered yet");
+            System.out.println("No se ha recuperado aun");
         }
     }
     
@@ -94,13 +120,13 @@ public class SymptomsConsulter {
         String prologQuery = "recovered(X).";
         query = new Query(prologQuery);
         if(query.hasSolution()){
-            System.out.println("Patients recovered:");
+            System.out.println("Pacientes recuperados:");
             while(query.hasMoreSolutions()){
                 String patientName = query.nextSolution().get("X").toString();
                 System.out.println("- " + patientName);
             }
         }else{
-            System.out.println("No asymptomatic patients found");
+            System.out.println("No hay pacientes recuperados");
         }
     }
     
