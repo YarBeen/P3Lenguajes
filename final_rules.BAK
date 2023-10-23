@@ -104,7 +104,7 @@ howManyVaccines(X,Result):-
 
  serious_case(X):-has_symptom(X,'trouble breathing').
 
- recovered(X):- paciente(X), not(has_symptom(X,_)).
+ recovered(X):- paciente(X), not(has_symptom(X,_)),pruebaCTBajos(X).
 
 
  has_risk_factor(X):-elder(X); has_condition(X,_).
