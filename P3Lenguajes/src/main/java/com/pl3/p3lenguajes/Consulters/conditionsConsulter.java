@@ -15,6 +15,7 @@ import org.jpl7.Term;
  * @author Yarman
  */
 public class conditionsConsulter {
+
         /**
 * Funcione que imprime si un paciente tiene que trabajar en casa
 * @param patientName nombre del paciente de la consultas
@@ -23,6 +24,8 @@ public class conditionsConsulter {
 * 
 
 */
+    
+
     public void workAtHome(String patientName) {
         Query queryPaciente = new Query("paciente(" + patientName + ").");
         if (!queryPaciente.hasSolution()) {

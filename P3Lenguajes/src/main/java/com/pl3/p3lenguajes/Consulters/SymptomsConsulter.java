@@ -14,9 +14,17 @@ public class SymptomsConsulter {
     private Query query;
     
     
-    
+    /*
+     * Funcion para encontrar los sintomas de un paciente
+     * Ejecuta el query de prolog y convierte la lista de prolog a lista de Java
+     * para poder imprimir cada sintoma.
+     *
+     * Entrada: Nombre del paciente en formato String
+     * Salida: void
+    */
     public void findSymptoms(String patientName){
-         Query queryPaciente = new Query("paciente("+patientName+").");
+        // Se valida de que sea un paciente
+        Query queryPaciente = new Query("paciente("+patientName+").");
         if(!queryPaciente.hasSolution()){
             System.out.println("El paciente no está registrado en el sistema");
             return;
@@ -26,6 +34,7 @@ public class SymptomsConsulter {
         
         if(query.hasSolution()){
             Term symptomList = query.oneSolution().get("Symptoms");
+            // Convertir la lista de prolog a java
             List<String> symptons = prologListToJavaList(symptomList);
             System.out.println("Sintomas de  " + patientName + ":");
             for(String symptom : symptons){
@@ -37,10 +46,14 @@ public class SymptomsConsulter {
         
     }
     
-    
+    /*
+     * Funcion que verifica si un paciente es asintomatico
+     * Entrada: Nombre del paciente en String
+     * Saldida: void
+    */
     public void isAsymptomatic(String patientName){
-        
-         Query queryPaciente = new Query("paciente("+patientName+").");
+        // Se valida de que sea un paciente
+        Query queryPaciente = new Query("paciente("+patientName+").");
         if(!queryPaciente.hasSolution()){
             System.out.println("El paciente no está registrado en el sistema");
             return;
@@ -54,11 +67,17 @@ public class SymptomsConsulter {
         }
     }
     
+    /*
+     * Funcion que consulta todas las personas que son asintomaticas
+     * Entrada: ninguna
+     * Salida: void
+    */
     public void isAsymptomatic(){
         String prologQuery = "is_asymptomatic(X).";
         query = new Query(prologQuery);
         if(query.hasSolution()){
             System.out.println("Paciente asintomaticos:");
+            // Obtiene todas las soluciones a la consulta
             while(query.hasMoreSolutions()){
                 String patientName = query.nextSolution().get("X").toString();
                 System.out.println("- " + patientName);
@@ -68,13 +87,19 @@ public class SymptomsConsulter {
         }
     }
     
-    
+    /*
+     * Funcion para contar los sintomas de un paciente
+     * Entrada: Nombre del paciente, lista de los sintomas del paciente
+     * Salida: void
+    */
     public void countSymptoms(String patientName, List<String> symptoms) {
-         Query queryPaciente = new Query("paciente("+patientName+").");
+        // Se valida de que sea un paciente
+        Query queryPaciente = new Query("paciente("+patientName+").");
         if(!queryPaciente.hasSolution()){
             System.out.println("El paciente no está registrado en el sistema");
             return;
         }
+        // Se convierte la lista de java en lista de prolog y se crea el query
         String prologQuery = "count_symptoms('" + patientName + "', " + javaListToPrologList(symptoms) + ", N).";
         query = new Query(prologQuery);
         if (query.hasSolution()) {
@@ -85,8 +110,14 @@ public class SymptomsConsulter {
     }
     
     
+    /*
+     * Funcion para buscar y contar los sintomas de un paciente
+     * Entrada: Nombre del paciente
+     * Salida: void
+    */
     public void findCountSymptoms(String patientName){
-         Query queryPaciente = new Query("paciente("+patientName+").");
+        // Se valida de que sea un paciente
+        Query queryPaciente = new Query("paciente("+patientName+").");
         if(!queryPaciente.hasSolution()){
             System.out.println("El paciente no está registrado en el sistema");
             return;
@@ -100,9 +131,14 @@ public class SymptomsConsulter {
         }
     }
     
-    
+    /*
+     * Funcion para verificar si un paciente esta recuperado
+     * Entrada: Nombre del paciente
+     * Salida: void
+    */
     public void recovered(String patientName){
-         Query queryPaciente = new Query("paciente("+patientName+").");
+        // Se valida de que sea un paciente
+        Query queryPaciente = new Query("paciente("+patientName+").");
         if(!queryPaciente.hasSolution()){
             System.out.println("El paciente no está registrado en el sistema");
             return;
@@ -116,11 +152,17 @@ public class SymptomsConsulter {
         }
     }
     
+    /*
+     * Funcion para obtener todas las personas recuperadas
+     * Entrada: ninguna
+     * Salida: void
+    */
     public void recovered(){
         String prologQuery = "recovered(X).";
         query = new Query(prologQuery);
         if(query.hasSolution()){
             System.out.println("Pacientes recuperados:");
+            // Itera por todas las soluciones de la consulta
             while(query.hasMoreSolutions()){
                 String patientName = query.nextSolution().get("X").toString();
                 System.out.println("- " + patientName);
@@ -131,8 +173,11 @@ public class SymptomsConsulter {
     }
     
     
-    
-    
+    /*
+     * Funcion para convertir una lista de java a lista de prolog
+     * Entrada: una lista de String
+     * Salida: String de con el formato de una lista en prolog
+    */
     private String javaListToPrologList(List<String> list) {
         StringBuilder prologList = new StringBuilder("[");
         for (int i = 0; i < list.size(); i++) {
@@ -145,6 +190,11 @@ public class SymptomsConsulter {
         return prologList.toString();
     }
     
+    /*
+     * Funcion para convertir una lista de prolog en una lista de java
+     * Entrada: Term que es una lista de prolog
+     * Salida: Una lista de String
+    */
     private List<String> prologListToJavaList(Term prologList) {
         List<String> javaList = new ArrayList<>();
         while (prologList.arity() == 2) {
