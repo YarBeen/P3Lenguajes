@@ -15,17 +15,18 @@ import org.jpl7.Term;
  * @author Yarman
  */
 public class suspicionConsulter {
-        /**
-* Funcione que imprime aquellos pacientes sospechosos
 
-* 
-
-*/
+    /**
+     * Funcione que imprime aquellos pacientes sospechosos
+     *
+     *
+     *
+     */
     public void suspicious() {
         String query = "suspicious(X).";
         Query q = new Query(query);
         if (!q.hasSolution()) {
-               System.out.println("No hay pacientes sospechosos");
+            System.out.println("No hay pacientes sospechosos");
             return;
         }
         Set<String> pacienteSinRepeticion = new HashSet<>();
@@ -37,21 +38,23 @@ public class suspicionConsulter {
 
             if (!pacienteSinRepeticion.contains(pacienteActual)) {
                 System.out.println("El paciente " + pacienteActual + " es sospechoso.");
-                pacienteSinRepeticion.add(pacienteActual); 
+                pacienteSinRepeticion.add(pacienteActual);
             }
 
         }
-       
+
         return;
     }
-        /**
-* Funcione que imprime si un paciente es sospechoso
-* @param patientName nombre del paciente de la consultas
-* Ejemplo: El paciente jose es sospechoso
 
-* 
-
-*/
+    /**
+     * Funcione que imprime si un paciente es sospechoso
+     *
+     * @param patientName nombre del paciente de la consultas Ejemplo: El
+     * paciente jose es sospechoso
+     *
+     *
+     *
+     */
     public int suspicious(String patientName) {
         Query queryPaciente = new Query("paciente(" + patientName + ").");
         if (!queryPaciente.hasSolution()) {
@@ -74,17 +77,18 @@ public class suspicionConsulter {
         }
         return 0;
     }
-        /**
-* Funcione que imprime aquellos pacientes con sospecha media
 
-* 
-
-*/
+    /**
+     * Funcione que imprime aquellos pacientes con sospecha media
+     *
+     *
+     *
+     */
     public void mediumLowSuspicious() {
         String query = "mediumLowSuspicious(X).";
         Query q = new Query(query);
         if (!q.hasSolution()) {
-              System.out.println("No hay pacientes con sospecha media");
+            System.out.println("No hay pacientes con sospecha media");
             return;
         }
         Set<String> pacienteSinRepeticion = new HashSet<>();
@@ -97,21 +101,23 @@ public class suspicionConsulter {
 
             if (!pacienteSinRepeticion.contains(pacienteActual)) {
                 System.out.println("El paciente " + pacienteActual + " tiene sospecha media.");
-                pacienteSinRepeticion.add(pacienteActual); 
+                pacienteSinRepeticion.add(pacienteActual);
             }
 
         }
-        
+
         return;
     }
-        /**
-* Funcione que imprime si un paciente tiene sospecha media
-* @param patientName nombre del paciente de la consultas
-* Ejemplo: El paciente jose tiene sospecha media
 
-* 
-
-*/
+    /**
+     * Funcione que imprime si un paciente tiene sospecha media
+     *
+     * @param patientName nombre del paciente de la consultas Ejemplo: El
+     * paciente jose tiene sospecha media
+     *
+     *
+     *
+     */
     public int mediumLowSuspicious(String patientName) {
         Query queryPaciente = new Query("paciente(" + patientName + ").");
         if (!queryPaciente.hasSolution()) {
@@ -134,17 +140,18 @@ public class suspicionConsulter {
         }
         return 0;
     }
-        /**
-* Funcione que imprime aquellos pacientes con sospecha media
 
-* 
-
-*/
+    /**
+     * Funcione que imprime aquellos pacientes con sospecha media
+     *
+     *
+     *
+     */
     public void lowSuspicious() {
         String query = "lowSuspicious(X).";
         Query q = new Query(query);
         if (!q.hasSolution()) {
-                        System.out.println("No hay pacientes con sospecha baja");
+            System.out.println("No hay pacientes con sospecha baja");
             return;
         }
         Set<String> pacienteSinRepeticion = new HashSet<>();
@@ -161,17 +168,19 @@ public class suspicionConsulter {
             }
 
         }
-         
+
         return;
     }
-        /**
-* Funcione que imprime si un paciente tiene sospecha baja
-* @param patientName nombre del paciente de la consultas
-* Ejemplo: El paciente jose es tiene sospecha baja
 
-* 
-
-*/
+    /**
+     * Funcione que imprime si un paciente tiene sospecha baja
+     *
+     * @param patientName nombre del paciente de la consultas Ejemplo: El
+     * paciente jose es tiene sospecha baja
+     *
+     *
+     *
+     */
     public int lowSuspicious(String patientName) {
         Query queryPaciente = new Query("paciente(" + patientName + ").");
         if (!queryPaciente.hasSolution()) {

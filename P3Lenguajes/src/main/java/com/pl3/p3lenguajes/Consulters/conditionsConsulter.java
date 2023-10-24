@@ -15,7 +15,14 @@ import org.jpl7.Term;
  * @author Yarman
  */
 public class conditionsConsulter {
+        /**
+* Funcione que imprime si un paciente tiene que trabajar en casa
+* @param patientName nombre del paciente de la consultas
+* Ejemplo: El paciente jose trabaja en casa
 
+* 
+
+*/
     public void workAtHome(String patientName) {
         Query queryPaciente = new Query("paciente(" + patientName + ").");
         if (!queryPaciente.hasSolution()) {
@@ -37,7 +44,13 @@ public class conditionsConsulter {
         }
         return;
     }
+        /**
+* Funcione que imprime todos los  pacientes que tienen  que trabajar en casa
 
+
+* 
+
+*/
     public void workAtHome() {
         String query = "workAtHome(X).";
         Query q = new Query(query);
@@ -61,7 +74,14 @@ public class conditionsConsulter {
         }
         return;
     }
+        /**
+* Funcione que imprime si un paciente puede viajar
+* @param patientName nombre del paciente de la consultas
+* Ejemplo: El paciente jose puede viajar
 
+* 
+
+*/
     public void canTravel(String patientName) {
         Query queryPaciente = new Query("paciente(" + patientName + ").");
         if (!queryPaciente.hasSolution()) {
@@ -83,7 +103,13 @@ public class conditionsConsulter {
         }
         return;
     }
+/**
+* Funcione que imprime todos los  pacientes que pueden viajar
 
+
+* 
+
+*/
     public void canTravel() {
         String query = "canTravel(X).";
         Query q = new Query(query);
